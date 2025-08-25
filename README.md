@@ -3,7 +3,7 @@
 ## email: ciera.george2003@gmail.com
 ## slack: Ciera
 ## image:
->(https://github.com/ciera-22/2143-OOP-Ciera/blob/20241012_171034.jpg?raw=true)
+<img src= "https://github.com/ciera-22/2143-OOP-Ciera/blob/main/20241012_171034.jpg" width = "200" >
 ## Assignments
 
 |  #  | Folder Link | Assignment Description |
