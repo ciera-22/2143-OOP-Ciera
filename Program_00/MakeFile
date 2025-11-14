@@ -1,0 +1,60 @@
+# -----------------------------------------------------------------------------
+# Configuration Variables
+# -----------------------------------------------------------------------------
+
+# 1. COMPILER: Use g++ for C++ files
+CC = g++
+
+# 2. OUTPUT: The name of the final executable file
+EXECUTABLE = Program_00_Install_and_Compile.exe
+
+# 3. SOURCE FILES: Your C++ files
+SOURCES = main.cpp
+
+# Configuration Variables
+# -----------------------------------------------------------------------------
+
+# 1. COMPILER: Use g++ for C++ files
+CC = g++
+
+# 2. OUTPUT: The name of the final executable file
+EXECUTABLE = Program_00_Install_and_Compile.exe
+
+# 3. SOURCE FILES: Your C++ files# -----------------------------------------------------------------------------
+
+SOURCES = main.cpp
+
+# 4. OBJECT FILES: Automatically generate .o names
+OBJECTS = $(SOURCES:.cpp=.o)
+
+# 5. SDL INCLUDE PATH (FIXED based on C:/msys64/mingw64/include)
+# This path must point to the folder containing the 'SDL2' folder.
+SDL_INCLUDE_PATH = -IC:/msys64/mingw64/include
+
+# 6. COMPILER FLAGS: Optimization, C++ standard, and include paths
+CFLAGS = -Wall -std=c++17 $(SDL_INCLUDE_PATH)
+
+# 7. LINKER FLAGS: Libraries to link against
+# -L: Specifies the directory where your SDL2 .lib or .a files are located.
+# FIX: Explicitly specify the path to the SDL2 library file for robust linking.
+LDFLAGS = C:/msys64/mingw64/lib/libSDL2main.a C:/msys64/mingw64/lib/libSDL2.a -mwindows
+
+# -----------------------------------------------------------------------------
+# Compilation Rules
+# -----------------------------------------------------------------------------
+
+all: $(EXECUTABLE)
+
+# Rule to create the final executable
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
+
+# Rule to compile each C++ source file into an object file
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean up compiled files
+clean:
+	rm -f $(EXECUTABLE) $(OBJECTS)
+	
+.PHONY: all clean
